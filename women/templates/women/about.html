@@ -1,6 +1,20 @@
 {% extends 'women/base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<p>Содержимое страницы о сайте
+    <h1>{{ title }}</h1>
+
+    {% for obj in page_obj %}
+        <p>{{ obj }}</p>
+    {% endfor %}
+
+<nav>
+    <ul>
+        {% for p in page_obj.paginator.page_range %}
+            <li>
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</nav>
 {% endblock %}
