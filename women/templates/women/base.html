@@ -37,24 +37,28 @@
             <table class="table-content" border=0 cellpadding="0" cellspacing="0">
                 <tr>
                     <!-- Sidebar слева -->
+{#                    {% load cache %}#}
+
                     <td valign="top" class="left-chapters">
                         <ul id="leftchapters">
-                            {% if cat_selected == 0 %}
-                                <li class="selected">Все категории</li>
-                            {% else %}
-                                <li><a href="{% url 'home' %}">Все категории</a></li>
-                            {% endif %}
-
-                            {% for c in cats %}
-                                {% if c.women__count > 0 %}
-                                    {% if c.pk == cat_selected %}
-                                        <li class="selected">{{ c.name }}</li>
-                                    {% else %}
-                                        <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
-                                    {% endif %}
+                            {# кешування на рівні шаблонів#}
+{#                            {% cache 60 sidebar %}#}
+                                {% if cat_selected == 0 %}
+                                    <li class="selected">Все категории</li>
+                                {% else %}
+                                    <li><a href="{% url 'home' %}">Все категории</a></li>
                                 {% endif %}
-                            {% endfor %}
 
+                                {% for c in cats %}
+                                    {% if c.women__count > 0 %}
+                                        {% if c.pk == cat_selected %}
+                                            <li class="selected">{{ c.name }}</li>
+                                        {% else %}
+                                            <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+{#                            {% endcache %}#}
 
                             <li class="share">
                                 <p>Наш канал</p>
