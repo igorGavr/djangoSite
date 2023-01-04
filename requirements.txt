@@ -2,6 +2,8 @@ asgiref==3.6.0
 click==7.1.2
 click-didyoumean==0.3.0
 Django==4.1.4
+django-ranged-response==0.2.0
+django-simple-captcha==0.5.17
 django_debug_toolbar==3.8.1
 djangorestframework==3.14.0
 p==1.4.0
